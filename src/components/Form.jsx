@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-import { Label, Input } from "./styles/Form.styled";
+// import PropTypes from "prop-types";
+import { Label, Input, Button } from "./styles/Form.styled";
 
 class Form extends Component {
   // ({ onClick, onChange }) {
@@ -62,27 +62,15 @@ class Form extends Component {
 
 export default Form;
 
-Form.propTypes = {
-  onClick: PropTypes.func,
-  onChange: PropTypes.func,
-};
+// Form.propTypes = {
+//   onClick: PropTypes.func,
+//   onChange: PropTypes.func,
+// };
 
 const HtmlForm = styled.form`
   border: 1px solid black;
   padding: 15px;
   width: 40%;
   background-color: rgb(216, 213, 213);
-`;
-
-const Button = styled.button`
-  display: block;
-  border: 1px solid gray;
-  border-radius: 3px;
-  font-size: 10px;
-  cursor: pointer;
-  padding: 5px;
-  &:hover {
-    background-color: black;
-    color: lightgray;
-  }
+  
 `;

@@ -23,18 +23,13 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-
   // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
   addToStateContacts = ({ name, number }) => {
     [...this.state.contacts].some((contact) => contact.name === name)
       ? alert(`Sorry, but ${name} is alredy in contacts.`)
-      :
-    this.setState((state) => ({
-      contacts: [
-        ...this.state.contacts,
-        { id: nanoid(4), name, number },
-      ],
-    }));
+      : this.setState((state) => ({
+          contacts: [...this.state.contacts, { id: nanoid(4), name, number }],
+        }));
   };
 
   updateFilteredContacts = () => {
@@ -44,19 +39,22 @@ class App extends Component {
     return filteredContacts;
   };
 
+  deleteContact = (id) => {
+    this.setState((state) => ({
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     const updateFilteredContacts = this.updateFilteredContacts();
     return (
       <>
         <Section title="Phonebook">
-          <Form
-            fromFormToApp={this.addToStateContacts}
-          />
+          <Form fromFormToApp={this.addToStateContacts} />
         </Section>
         <Section title="Contacts">
           <Filter onChange={this.addFilterToState} />
-
-          <Contacts contacts={updateFilteredContacts} />
+          <Contacts contacts={updateFilteredContacts} onClick={this.deleteContact} />
         </Section>
       </>
     );
