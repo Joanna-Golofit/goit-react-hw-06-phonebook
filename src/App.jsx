@@ -26,6 +26,9 @@ class App extends Component {
 
   // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
   addToStateContacts = ({ name, number }) => {
+    [...this.state.contacts].some((contact) => contact.name === name)
+      ? alert(`Sorry, but ${name} is alredy in contacts.`)
+      :
     this.setState((state) => ({
       contacts: [
         ...this.state.contacts,
