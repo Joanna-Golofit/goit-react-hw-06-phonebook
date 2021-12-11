@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import {Label, Input} from './styles/Form.styled'
 
 function Form({ onClick, onChange }) {
   const loginInputId1 = nanoid();
@@ -46,32 +47,34 @@ const HtmlForm = styled.form`
   border: 1px solid black;
   padding: 15px;
   width: 40%;
-`;
-
-const Label = styled.label`
-  display: block;
+  background-color: rgb(216, 213, 213);
 `;
 
 const Button = styled.button`
   display: block;
-  border: 1px solid lightgray;
+  border: 1px solid gray;
   border-radius: 3px;
   /* background-color: #a8a6a6; */
   font-size: 10px;
   cursor: pointer;
+  padding: 5px;
   &:hover {
     background-color: black;
     color: lightgray;
   }
-`;
+  `;
+  
+//   const Label = styled.label`
+//     display: block;
+//   `;
 
-const Input = styled.input`
-  margin-top: 5px;
-  margin-bottom: 20px;
-  &:focus,
-  &:active {
-    outline: 0;
-    border-style: none;
-    box-shadow: 0 0 10px #719ece;
-  }
-`;
+// const Input = styled.input`
+//   margin-top: 5px;
+//   margin-bottom: 20px;
+//   &:focus,
+//   &:active {
+//     outline: 0;
+//     border-style: none;
+//     box-shadow: 0 0 10px #719ece;
+//   }
+// `;

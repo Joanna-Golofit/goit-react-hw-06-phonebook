@@ -4,16 +4,19 @@ import Section from "./components/Section";
 import Form from "./components/Form";
 import Contacts from "./components/Contacts";
 import { nanoid } from "nanoid";
+import Filter from "./components/Filter";
 
 class App extends Component {
   state = {
     contacts: [
-      { id: nanoid(4), name: "Rosie Simpson", number: "123-12-12"},
-      { id: nanoid(4), name: "Hermione Kline",number: "456-45-45" },
-      { id: nanoid(4), name: "Eden Clements", number: "789-78-78"},
+      { id: nanoid(4), name: "Rosie Simpson", number: "123-12-12" },
+      { id: nanoid(4), name: "Hermione Kline", number: "456-45-45" },
+      { id: nanoid(4), name: "Eden Clements", number: "789-78-78" },
+      { id: nanoid(4), name: "Annie Copeland", number: "227-91-26" },
     ],
     name: "",
     number: "",
+    filter: "",
   };
 
   // onChange={this.addToState}
@@ -23,7 +26,7 @@ class App extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
- 
+
   // onClick={this.addToStateContacts}
   //  dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.contacts
   addToStateContacts = (e) => {
@@ -47,12 +50,10 @@ class App extends Component {
     return (
       <>
         <Section title="Phonebook">
-          <Form
-            onClick={this.addToStateContacts}
-            onChange={this.addToState}
-          />
+          <Form onClick={this.addToStateContacts} onChange={this.addToState} />
         </Section>
         <Section title="Contacts">
+          <Filter onChange={this.addToState} />
           <Contacts contacts={this.state.contacts} />
         </Section>
       </>
