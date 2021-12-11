@@ -2,22 +2,30 @@ import { nanoid } from "nanoid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-
 function Form({ onClick, onChange }) {
-  const loginInputId = nanoid();
+  const loginInputId1 = nanoid();
+  const loginInputId2 = nanoid();
 
   return (
     <HtmlForm
-      // onSubmit={onSubmit}
+      onChange={onChange}
     >
-      <Label htmlFor={loginInputId}>Name</Label>
+      <Label htmlFor={loginInputId1}>Name</Label>
       <Input
-        onChange={onChange}
         type="text"
         name="name"
-        id={loginInputId}
+        id={loginInputId1}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+      />
+      <Label htmlFor={loginInputId2}>Number</Label>
+      <Input
+        type="tel"
+        name="number"
+        id={loginInputId2}
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
       <Button type="submit" onClick={onClick}>
@@ -60,7 +68,8 @@ const Button = styled.button`
 const Input = styled.input`
   margin-top: 5px;
   margin-bottom: 20px;
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: 0;
     border-style: none;
     box-shadow: 0 0 10px #719ece;

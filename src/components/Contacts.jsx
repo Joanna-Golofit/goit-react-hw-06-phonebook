@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 function Contacts({contacts}) {
   return (
     <ul>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          {contact.name}
+      {contacts.map(({id, name, number}) => (
+        <li key={id}>
+          {name}: {number}
         </li>
       ))}
     </ul>
