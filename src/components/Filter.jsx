@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { Label, Input } from "./styles/Form.styled";
+import PropTypes from "prop-types";
 
 
 const Filter = ({ onChange }) => {
@@ -14,3 +15,7 @@ const Filter = ({ onChange }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  onChange: PropTypes.func,
+};
