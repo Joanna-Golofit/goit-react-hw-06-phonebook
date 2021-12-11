@@ -22,6 +22,7 @@ class App extends Component {
   // onChange={this.addToState}
   //  dla form - zapisuje kazda zmiane w stane.name
   addToState = (e) => {
+    
     // console.log(e.target.name); // czyli ktorys z inputow
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -46,7 +47,15 @@ class App extends Component {
     e.target.closest("form").reset();
   };
 
+  updateFilteredContacts = () => {
+    const filteredContacts = [...this.state.contacts].filter((contact) =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+    return filteredContacts;
+  };
+
   render() {
+    const updateFilteredContacts = this.updateFilteredContacts();
     return (
       <>
         <Section title="Phonebook">
@@ -54,7 +63,12 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter onChange={this.addToState} />
-          <Contacts contacts={this.state.contacts} />
+        
+          <Contacts
+            contacts={
+              updateFilteredContacts           
+            }
+          />
         </Section>
       </>
     );

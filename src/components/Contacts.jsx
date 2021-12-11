@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 // import styled from "styled-components";
 
-function Contacts({contacts}) {
+function Contacts({ contacts }) {
   return (
     <ul>
-      {contacts.map(({id, name, number}) => (
+      {contacts.map(({ id, name, number }) => (
         <li key={id}>
           {name}: {number}
         </li>
@@ -17,4 +17,5 @@ export default Contacts
 
 Contacts.propTypes = {
   contacts: PropTypes.array,
+  // filter: PropTypes.string,
 };
