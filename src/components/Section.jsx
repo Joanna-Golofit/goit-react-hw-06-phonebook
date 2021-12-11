@@ -13,7 +13,7 @@ const Section = ({ title, children }) => {
 Section.propTypes = {
   title: PropTypes.string,
   children: PropTypes.object, // 1 dziecko
-  // children: PropTypes.array, // wiecej niz jedno dziecko
+  // children: PropTypes.array, // wiecej niz jedno dziecko?
 
   // children: PropTypes.oneOfType([
   //   PropTypes.array,

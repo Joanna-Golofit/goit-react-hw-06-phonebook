@@ -31,8 +31,17 @@ class App extends Component {
         { id: nanoid(4), name: this.state.name },
       ],
     }));
-    // console.log("value", e.target.previousSibling.value); // czyli input
-    e.target.previousSibling.value = "";
+
+    //RESET stanu
+    this.setState((state) => ({ name: "" }));
+
+    //RESET formularza/inputa
+    // e.target.parentNode.reset()
+    // e.target.previousSibling.value = "";
+    e.target.closest("form").reset()
+    
+        // console.log("form?", e.target.closest("form")); // czyli form
+        // console.log("value", e.target.previousSibling.value); // czyli input
   };;
 
 

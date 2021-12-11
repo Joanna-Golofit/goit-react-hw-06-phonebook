@@ -1,7 +1,5 @@
-// import React from 'react'
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 // import styled from "styled-components";
-
 
 function Contacts({contacts}) {
   return (
@@ -16,3 +14,7 @@ function Contacts({contacts}) {
 }
 
 export default Contacts
+
+Contacts.propTypes = {
+  contacts: PropTypes.array,
+};
