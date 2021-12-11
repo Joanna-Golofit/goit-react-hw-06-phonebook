@@ -14,37 +14,24 @@ class App extends Component {
       { id: nanoid(4), name: "Eden Clements", number: "789-78-78" },
       { id: nanoid(4), name: "Annie Copeland", number: "227-91-26" },
     ],
-    name: "",
-    number: "",
     filter: "",
   };
 
-  // onChange={this.addToState}
-  //  dla form - zapisuje kazda zmiane w stane.name
-  addToState = (e) => {
-    
-    // console.log(e.target.name); // czyli ktorys z inputow
+  //  onChange  -  dla filter - zapisuje kazda zmiane w state.filter
+  addFilterToState = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
-  // onClick={this.addToStateContacts}
-  //  dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.contacts
-  addToStateContacts = (e) => {
-    e.preventDefault();
 
+  // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
+  addToStateContacts = ({ name, number }) => {
     this.setState((state) => ({
       contacts: [
         ...this.state.contacts,
-        { id: nanoid(4), name: this.state.name, number: this.state.number },
+        { id: nanoid(4), name, number },
       ],
     }));
-
-    //RESET stanu
-    this.setState((state) => ({ name: "", number: "" }));
-
-    //RESET formularza/inputa
-    e.target.closest("form").reset();
   };
 
   updateFilteredContacts = () => {
@@ -59,16 +46,14 @@ class App extends Component {
     return (
       <>
         <Section title="Phonebook">
-          <Form onClick={this.addToStateContacts} onChange={this.addToState} />
+          <Form
+            fromFormToApp={this.addToStateContacts}
+          />
         </Section>
         <Section title="Contacts">
-          <Filter onChange={this.addToState} />
-        
-          <Contacts
-            contacts={
-              updateFilteredContacts           
-            }
-          />
+          <Filter onChange={this.addFilterToState} />
+
+          <Contacts contacts={updateFilteredContacts} />
         </Section>
       </>
     );
