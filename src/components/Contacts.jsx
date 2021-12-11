@@ -3,12 +3,14 @@
 // import styled from "styled-components";
 
 
-function Contacts() {
+function Contacts({contacts}) {
   return (
     <ul>
-      <li>Rosie Simpson</li>
-      <li>Hermione Kline</li>
-      <li>Eden Clements</li>      
+      {contacts.map((contact) => (
+        <li key={contact.id}>
+          {contact.name}
+        </li>
+      ))}
     </ul>
   );
 }

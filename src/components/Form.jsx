@@ -2,13 +2,16 @@
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
-function Form() {
+function Form({ onClick, onChange }) {
   const loginInputId = nanoid();
 
   return (
-    <HtmlForm>
+    <HtmlForm
+      // onSubmit={onSubmit}
+    >
       <Label htmlFor={loginInputId}>Name</Label>
       <Input
+        onChange={onChange}
         type="text"
         name="name"
         id={loginInputId}
@@ -16,7 +19,9 @@ function Form() {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <Button type="submit">Add contact</Button>
+      <Button type="submit" onClick={onClick}>
+        Add contact
+      </Button>
     </HtmlForm>
   );
 }
@@ -49,11 +54,9 @@ const Button = styled.button`
 const Input = styled.input`
   margin-top: 5px;
   margin-bottom: 20px;
-  &:focus {
-    /* outline-style: none !important; */
-    /* outline: none !important; */
-    outline-color: #719ece;
-    /* border-color: #719ece; */
+  &:focus, &:active {
+    outline: 0;
+    border-style: none;
     box-shadow: 0 0 10px #719ece;
   }
 `;
