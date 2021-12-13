@@ -21,6 +21,7 @@ class App extends Component {
   addFilterToState = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+    
   };
 
   // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
@@ -46,6 +47,7 @@ class App extends Component {
   };
 
   render() {
+    //tak trzeba bo chce wynik funkcji przekazac,a nie funkcje
     const updateFilteredContacts = this.updateFilteredContacts();
     return (
       <>

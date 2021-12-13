@@ -1,6 +1,6 @@
 
-https://github.com/goitacademy/react-homework/blob/master/homework-02/README.pl.md
-
+https://github.com/goitacademy/react-homework/blob/master/homework-03/README.pl.md
+https://github.com/goitacademy/react-homework/blob/master/homework-03/phonebook/README.pl.md
 
 
 
