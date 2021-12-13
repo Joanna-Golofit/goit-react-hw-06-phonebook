@@ -21,7 +21,6 @@ class App extends Component {
   addFilterToState = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-    
   };
 
   // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
@@ -30,7 +29,8 @@ class App extends Component {
       ? alert(`Sorry, but ${name} is already in contacts.`)
       : this.setState((state) => ({
           contacts: [...this.state.contacts, { id: nanoid(4), name, number }],
-        }));
+      }));
+    
   };
 
   updateFilteredContacts = () => {
@@ -46,17 +46,29 @@ class App extends Component {
     }));
   };
 
+  addToLocalStorage = () => {
+    localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+  }
+
   render() {
     //tak trzeba bo chce wynik funkcji przekazac,a nie funkcje
     const updateFilteredContacts = this.updateFilteredContacts();
+    const addToLocalStorage = this.addToLocalStorage();
     return (
       <>
         <Section title="Phonebook">
-          <Form fromFormToApp={this.addToStateContacts} />
+          <Form
+            fromFormToApp={this.addToStateContacts}
+            // onSubmit={this.addToLocalStorage}
+            onSubmit={addToLocalStorage}
+          />
         </Section>
         <Section title="Contacts">
           <Filter onChange={this.addFilterToState} />
-          <Contacts contacts={updateFilteredContacts} onClick={this.deleteContact} />
+          <Contacts
+            contacts={updateFilteredContacts}
+            onClick={this.deleteContact}
+          />
         </Section>
       </>
     );
