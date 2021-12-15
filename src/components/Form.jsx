@@ -3,13 +3,26 @@ import { nanoid } from "nanoid";
 import styled from "styled-components";
 // import PropTypes from "prop-types";
 import { Label, Input, Button } from "./styles/Form.styled";
+// import { addToLocalStorage } from "../utils/localStorage";
+
 
 class Form extends Component {
-  // ({ onClick, onChange }) {
   state = {
     name: "",
     number: "",
   };
+
+  componentDidMount() {
+  //   console.log("Form - Mount");
+  //   addToLocalStorage(this.props.contacts);
+  }
+  
+    // componentDidMount() {
+    //   console.log("Form - heja from componentDidMount");
+    // }
+    // componentDidUpdate() {
+    //   console.log("Form - heja from componentDidUpdate");
+    // }
 
   loginInputId1 = nanoid();
   loginInputId2 = nanoid();
@@ -18,13 +31,12 @@ class Form extends Component {
   addToState = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
-
   };
 
   // onClick -  dla buttona - przy kliknieciu przesyla wartosc z state.name i state.number do App.jsx
   sendStateDataBackToApp = (e) => {
     e.preventDefault();
-    this.props.fromFormToApp({...this.state});
+    this.props.fromFormToApp({ ...this.state });
 
     //RESET stanu
     this.setState((state) => ({ name: "", number: "" }));
@@ -35,11 +47,13 @@ class Form extends Component {
   render() {
     return (
       // <HtmlForm onChange={this.addToState} onSubmit={this.props.onSubmit}>
-      <HtmlForm onChange={this.addToState}>
+      <HtmlForm>
         <Label htmlFor={this.loginInputId1}>Name</Label>
         <Input
+          onChange={this.addToState}
           type="text"
           name="name"
+          value={this.state.name}
           id={this.loginInputId1}
           placeholder="Joanna Gołofit"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -48,6 +62,7 @@ class Form extends Component {
         />
         <Label htmlFor={this.loginInputId2}>Number</Label>
         <Input
+          onChange={this.addToState}
           type="tel"
           name="number"
           id={this.loginInputId2}
