@@ -68,7 +68,7 @@ class App extends Component {
     // const addToLocalStorage = this.addToLocalStorage();
     return (
       <>
-        <Section title="Phonebook 3">
+        <Section title="Phonebook 6 with redux toolkit">
           <Form
             fromFormToApp={this.addToStateContacts}
             // onSubmit={this.addToLocalStorage} // nie tak?
