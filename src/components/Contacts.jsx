@@ -2,14 +2,21 @@
 // import PropTypes from "prop-types";
 import styled from "styled-components";
 // import { addToLocalStorage } from "../utils/localStorage";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteContact } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
+import { deleteContact } from "../features/actions";
+import { useSelector } from "react-redux";
+
 
 const Contacts = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector((state) => state.contact.value.contacts);
+  console.log("contacts z Contacts", contacts);
+
+
   return (
     <ul>
-      {this.props.contacts.map(({ id, name, number }) => (
+      {contacts.map(({ id, name, number }) => (
         <li key={id}>
           {name}: {number}
           <BtnDelete onClick={() => dispatch(deleteContact(id))}>

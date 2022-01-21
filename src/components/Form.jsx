@@ -1,20 +1,24 @@
 //return powinien byc w miare ok, brakuje fubkcji dodajacych i sprawdzajacych czy kontakt juz jest
 
-import React, { Component } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import styled from "styled-components";
 // import PropTypes from "prop-types";
 import { Label, Input, Button } from "./styles/Form.styled";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { addToLocalStorage } from "../utils/localStorage";
+import { useSelector } from "react-redux";
 
-const Form = ({ contacts }) => {
-  const dispatch = useDispatch();
+
+const Form = () => {
+  // const dispatch = useDispatch();
   const saveContact = (e) => {
     e.preventDefault();
-    const { name, value } = e.target;
+    // const { name, value } = e.target;
     //brakuje kodu
   };
+const contacts = useSelector((state) => state.contact.value.contacts);
+console.log("contacts z Form", contacts);
+
   return (
     <HtmlForm onSubmit={saveContact}>
       <Label htmlFor="name">Name</Label>
@@ -22,7 +26,7 @@ const Form = ({ contacts }) => {
         // onChange={saveContact}
         type="text"
         name="name"
-        value={this.state.name}
+        // value={this.state.name}
         placeholder="Name Surname"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"

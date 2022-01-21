@@ -1,11 +1,12 @@
 import { Label, Input } from "./styles/Form.styled";
 import { useDispatch } from "react-redux";
-import { filterContacts } from "react-redux";
+import { filterContacts } from "../features/actions";
 
 
 const Filter = () => {
   const dispatch = useDispatch();
 
+  
   return (
     <>
       <Label htmlFor="filter">Find contacts by name</Label>
