@@ -11,7 +11,7 @@ export const Input = styled.input`
   &:active {
     outline: 0;
     border: 2px solid transparent;
-    box-shadow: 0 0 10px #719ece;
+    box-shadow: 0 0 10px rgb(223, 179, 197);
   }
 `;
 
@@ -24,6 +24,6 @@ export const Button = styled.button`
   padding: 5px;
   &:hover {
     background-color: black;
-    color: lightgray;
+    color: rgb(223, 179, 197);
   }
 `;

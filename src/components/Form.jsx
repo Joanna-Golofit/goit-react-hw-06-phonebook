@@ -1,26 +1,39 @@
 //return powinien byc w miare ok, brakuje fubkcji dodajacych i sprawdzajacych czy kontakt juz jest
 
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 import styled from "styled-components";
 // import PropTypes from "prop-types";
 import { Label, Input, Button } from "./styles/Form.styled";
 // import { useDispatch } from "react-redux";
 // import { addToLocalStorage } from "../utils/localStorage";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from "../features/actions";
 
 
 const Form = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const contacts = useSelector((state) => state.contact.value.contacts);
+  
   const saveContact = (e) => {
     e.preventDefault();
+
     // const { name, value } = e.target;
+    const {
+      elements: { name, number },
+    } = e.currentTarget;
+    
+    dispatch(
+      addContact({ id: nanoid(), name: name.value, number: number.value })
+      );
+      console.log("saveContact");
+      console.log("contacts z Form", contacts);
     //brakuje kodu
   };
-const contacts = useSelector((state) => state.contact.value.contacts);
-console.log("contacts z Form", contacts);
 
   return (
     <HtmlForm onSubmit={saveContact}>
+    {/* <HtmlForm onSubmit={() => dispatch(addContact)}> */}
       <Label htmlFor="name">Name</Label>
       <Input
         // onChange={saveContact}
@@ -43,7 +56,8 @@ console.log("contacts z Form", contacts);
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
-      <Button type="submit"
+      <Button
+        type="submit"
         // onClick={sendStateDataBackToApp}
       >
         Add contact
@@ -101,6 +115,6 @@ const HtmlForm = styled.form`
   padding: 15px;
   width: 40%;
   min-width: 200px;
-  background-color: rgb(216, 213, 213);
+  background-color: rgb(223, 179, 197);
   
 `;

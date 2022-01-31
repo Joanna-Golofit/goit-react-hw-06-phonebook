@@ -16,9 +16,13 @@ export const contactSlice = createSlice({
   name: "contact",
   initialState: { value: initialStateValue },
   reducers: {
-    addContact: (state, action) => {
-      state.value = action.payload;
-    },
+    // addContact: (state, action) => {
+    //   state.value = action.payload;
+    // },
+    addContact: (state, action) => ({
+       ...state,
+      contacts: [ ...state.contact.value.contacts, action.payload ],
+    }),
     deleteContact: (state, action) => {
       state.value = initialStateValue;
     },

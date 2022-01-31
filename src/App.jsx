@@ -1,5 +1,5 @@
 import "./App.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Section from "./components/Section";
 import Form from "./components/Form";
 import Contacts from "./components/Contacts";
@@ -7,24 +7,12 @@ import Contacts from "./components/Contacts";
 import Filter from "./components/Filter";
 
 const App = () => {
-  // const contacts = useSelector((state) =>  state.contact.value.contacts);
-  // const state = useSelector((state) => state);
-  // console.log("contacts", contacts);
-  // console.log("state", state);
-
-
-
-
-
+  
   // //  onChange  -  dla filter - zapisuje kazda zmiane w state.filter
   // addFilterToState = (e) => {
   //   const { name, value } = e.target;
   //   this.setState({ [name]: value });
   // };
-
-
-
-
 
   // // onClick - dla buttona - przy kliknieciu zapisuje wartosc z state.name i state.number ktora "wrócila" z Form.jsx
   // addToStateContacts = ({ name, number }) => {
@@ -69,13 +57,11 @@ const App = () => {
   // const addToLocalStorage = this.addToLocalStorage();
   return (
     <>
-      <Section title="Phonebook 6 with redux toolkit">
-        {/* <Form contacts={contacts} /> */}
+      <Section title="Phonebook 6 (with redux toolkit)">
         <Form />
       </Section>
       <Section title="Contacts">
         <Filter />
-        {/* <Contacts contacts={contacts} /> */}
         <Contacts  />
       </Section>
     </>
