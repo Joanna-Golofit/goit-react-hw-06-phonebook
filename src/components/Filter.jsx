@@ -1,11 +1,11 @@
 import { Label, Input } from "./styles/Form.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterContacts } from "../features/actions";
 
 
 const Filter = () => {
   const dispatch = useDispatch();
-
+const filter = useSelector((state) => state.contact.filter);
   
   return (
     <>
@@ -13,6 +13,7 @@ const Filter = () => {
       <Input
         type="text"
         name="filter"
+        value={filter}
         onChange={(e) => dispatch(filterContacts(e.target.value))}
         title="Please provide a name."
       />

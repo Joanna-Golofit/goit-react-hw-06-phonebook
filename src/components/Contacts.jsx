@@ -19,16 +19,23 @@ const Contacts = () => {
     dispatch(deleteContact({id})); 
     console.log("z Contacts - handleDelete", id);
   }
+  const filter = useSelector((state) => state.contact.filter);
 
   return (
     <ul>
-      {contacts.map(({ id, name, number }) => (
-        <li key={id}>
-          {name}: {number}
-          {/* <BtnDelete onClick={() => {dispatch(deleteContact(id))}}> */}
-          <BtnDelete onClick={() => handleDelete(id)}>Delete</BtnDelete>
-        </li>
-      ))}
+      {contacts
+        .filter(({ name }) =>
+          filter !== ""
+            ? name.toLowerCase().includes(filter.toLowerCase())
+            : true
+        )
+        .map(({ id, name, number }) => (
+          <li key={id}>
+            {name}: {number}
+            {/* <BtnDelete onClick={() => {dispatch(deleteContact(id))}}> */}
+            <BtnDelete onClick={() => handleDelete(id)}>Delete</BtnDelete>
+          </li>
+        ))}
     </ul>
   );
 };

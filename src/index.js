@@ -5,6 +5,7 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import contactReducer from "./features/contact"; // to nasz contactSlice.reducer lub contactSlice
+import { addContact } from "./features/contact";
 
 
 const store = configureStore({
@@ -13,6 +14,14 @@ const store = configureStore({
     // theme: themeReducer,
   },
 });
+//sprawdzajki
+console.log("index.js. - store", store);
+console.log("index.js. - store.getState()", store.getState());
+console.log("index.js. - addContact", addContact);
+console.log(
+  "index.js. - store.dispatch(addContact)",
+  store.dispatch(addContact)
+);
 
 ReactDOM.render(
   <React.StrictMode>
