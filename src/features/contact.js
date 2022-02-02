@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-
 const initialState = {
   contacts: [
     { id: nanoid(4), name: "RRRosie Simpson", number: "123-12-12" },
@@ -31,10 +30,16 @@ const contactSlice = createSlice({
       console.log("deleteContact - action", action);
       // console.log("state.contacts", state.contacts);
       console.log("deleteContact - action.payload.id", action.payload.id);
-     state.contacts = state.contacts.filter(
+      state.contacts = state.contacts.filter(
         (user) => user.id !== action.payload.id
       );
       // state.value = state.value.filter((user) => user.id !== action.payload.id);
+    },
+    filterContacts: (state, action) => {
+      console.log("filterContacts - action", action);
+      state.contacts = state.contacts.filter((user) =>
+        user.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
     },
   },
 });
