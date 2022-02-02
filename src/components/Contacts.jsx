@@ -3,24 +3,29 @@
 import styled from "styled-components";
 // import { addToLocalStorage } from "../utils/localStorage";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
 import { deleteContact } from "../features/actions";
 import { useSelector } from "react-redux";
 
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contact.value.contacts);
-  console.log("contacts z Contacts", contacts);
+  const contacts = useSelector((state) => state.contact.contacts);
+  const state = useSelector((state) => state);
+  console.log("z Contacts - contacts", contacts);
+  console.log("z Contacts - state", state);
+
+  const handleDelete = (id) => {
+    dispatch(deleteContact({id})); 
+    console.log("z Contacts - handleDelete", id);
+  }
 
   return (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
           {name}: {number}
-          <BtnDelete onClick={() => dispatch(deleteContact(id))}>
-            Delete
-          </BtnDelete>
+          {/* <BtnDelete onClick={() => {dispatch(deleteContact(id))}}> */}
+          <BtnDelete onClick={() => handleDelete(id)}>Delete</BtnDelete>
         </li>
       ))}
     </ul>

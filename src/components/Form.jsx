@@ -8,38 +8,50 @@ import { Label, Input, Button } from "./styles/Form.styled";
 // import { addToLocalStorage } from "../utils/localStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../features/actions";
-
+import { useState } from "react";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const contacts = useSelector((state) => state.contact.contacts);
+  const state = useSelector((state) => state);
 
-  const contacts = useSelector((state) => state.contact.value.contacts);
-  
-  const saveContact = (e) => {
+  // const saveContact = (e) => {
+  //   e.preventDefault();
+
+  //   // const { name, value } = e.target;
+  //   const {
+  //     elements: { name, number },
+  //   } = e.currentTarget;
+
+  //   dispatch(
+  //     addContact({ id: nanoid(), name: name.value, number: number.value })
+  //     );
+  //     console.log("saveContact", name.value, number.value);
+  //     console.log("contacts z Form", contacts);
+  //   //brakuje kodu
+  // };
+  const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addContact({ id: nanoid(), name, number }));
+    console.log("z Form - handleSubmit", name, number);
+    console.log("z Form - state", state);
 
-    // const { name, value } = e.target;
-    const {
-      elements: { name, number },
-    } = e.currentTarget;
-    
-    dispatch(
-      addContact({ id: nanoid(), name: name.value, number: number.value })
-      );
-      console.log("saveContact");
-      console.log("contacts z Form", contacts);
-    //brakuje kodu
+    console.log("z Form - contacts z handleSubmit", contacts);
   };
 
   return (
-    <HtmlForm onSubmit={saveContact}>
-    {/* <HtmlForm onSubmit={() => dispatch(addContact)}> */}
+    // <HtmlForm onSubmit={saveContact}>
+    // <HtmlForm onSubmit={handleSubmit}>
+    <HtmlForm>
       <Label htmlFor="name">Name</Label>
       <Input
-        // onChange={saveContact}
+        onChange={(e) => setName(e.target.value)}
         type="text"
         name="name"
         // value={this.state.name}
+        value={name}
         placeholder="Name Surname"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -47,26 +59,24 @@ const Form = () => {
       />
       <Label htmlFor="number">Number</Label>
       <Input
-        // onChange={saveContact}
+        onChange={(e) => setNumber(e.target.value)}
         type="tel"
         name="number"
+        value={number}
         // id={this.loginInputId2}
         placeholder="123-456-789"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
-      <Button
-        type="submit"
-        // onClick={sendStateDataBackToApp}
-      >
+      <Button type="submit" onClick={handleSubmit}>
         Add contact
       </Button>
     </HtmlForm>
   );
-}
+};
 
-  // ============
+// ============
 // class Form extends Component {
 //   state = {
 //     name: "",
@@ -76,7 +86,7 @@ const Form = () => {
 //   componentDidMount() {
 //   //   console.log("Form - Mount");
 //   //   addToLocalStorage(this.props.contacts);
-//   }  
+//   }
 
 //   // loginInputId1 = nanoid();
 //   // loginInputId2 = nanoid();
@@ -99,7 +109,7 @@ const Form = () => {
 //   };
 
 //   render() {
-    
+
 //   }
 // }
 
@@ -116,5 +126,4 @@ const HtmlForm = styled.form`
   width: 40%;
   min-width: 200px;
   background-color: rgb(223, 179, 197);
-  
 `;

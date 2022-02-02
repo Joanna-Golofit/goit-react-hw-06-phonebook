@@ -1,7 +1,9 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const addContact = createAction("contacts/add");
-const deleteContact = createAction("contacts/delete");
-const filterContacts = createAction("contacts/filter");
+
+//tak jak name: "contact" w contactSlice
+const addContact = createAction("contact/addContact");
+const deleteContact = createAction("contact/deleteContact");
+const filterContacts = createAction("contact/filter");
 
 export { addContact, deleteContact, filterContacts };
