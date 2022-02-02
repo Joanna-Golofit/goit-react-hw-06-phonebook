@@ -13,6 +13,7 @@ const Contacts = () => {
   const state = useSelector((state) => state);
   console.log("z Contacts - contacts", contacts);
   console.log("z Contacts - state", state);
+  console.log("z Contacts - state.contact.contacts", state.contact.contacts);
 
   const handleDelete = (id) => {
     dispatch(deleteContact({id})); 

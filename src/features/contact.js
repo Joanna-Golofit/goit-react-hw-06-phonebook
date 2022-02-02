@@ -18,7 +18,9 @@ const contactSlice = createSlice({
   reducers: {
     // WEAZNE action.type: "contact/addContact" tak jak name z contactSlice i metoda - actions
     addContact: (state, action) => {
-      //   state.value = action.payload;
+      // console.log(addContact- state", state);
+      // console.log(addContact- action", action)
+
       state.contacts.push(action.payload);
     },
     // addContact: (state, action) => ({
@@ -26,11 +28,12 @@ const contactSlice = createSlice({
     // contacts: [...state.contacts, action.payload],
     // }),
     deleteContact: (state, action) => {
-      console.log("action", action);
-      console.log("action.payload.id", action.payload.id);
-    //  state.contacts = state.contacts.filter(
-    //     (user) => user.id !== action.payload.id
-      // );
+      console.log("deleteContact - action", action);
+      // console.log("state.contacts", state.contacts);
+      console.log("deleteContact - action.payload.id", action.payload.id);
+     state.contacts = state.contacts.filter(
+        (user) => user.id !== action.payload.id
+      );
       // state.value = state.value.filter((user) => user.id !== action.payload.id);
     },
   },
