@@ -10,15 +10,27 @@ import { useSelector } from "react-redux";
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contact.contacts);
+  //proby local storage:
+  //   const contactsFromStorage = [];
+
+  //   const loadLocalStore = (key) => {
+  //   try {
+  //     const serializedState = localStorage.getItem(key);
+  //     return serializedState === null ? undefined : JSON.parse(serializedState);
+  //   } catch (error) {
+  //     console.error("Get error: ", error.message);
+  //   }
+  // };
+
   const state = useSelector((state) => state);
   console.log("z Contacts - contacts", contacts);
   console.log("z Contacts - state", state);
   console.log("z Contacts - state.contact.contacts", state.contact.contacts);
 
   const handleDelete = (id) => {
-    dispatch(deleteContact({id})); 
+    dispatch(deleteContact({ id }));
     console.log("z Contacts - handleDelete", id);
-  }
+  };
   const filter = useSelector((state) => state.contact.filter);
 
   return (

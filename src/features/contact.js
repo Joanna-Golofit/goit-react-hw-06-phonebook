@@ -3,8 +3,6 @@ import { nanoid } from "nanoid";
 
 const initialState = {
   contacts: [
-    { id: nanoid(4), name: "local storage", number: "123-12-12" },
-    { id: nanoid(4), name: "already in contacts", number: "123-12-12" },
     { id: nanoid(4), name: "RRRosie Simpson", number: "123-12-12" },
     { id: nanoid(4), name: "Hermione Kline", number: "456-45-45" },
     { id: nanoid(4), name: "Eden Clements", number: "789-78-78" },

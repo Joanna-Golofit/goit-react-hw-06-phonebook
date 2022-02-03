@@ -32,13 +32,29 @@ const Form = () => {
   //     console.log("contacts z Form", contacts);
   //   //brakuje kodu
   // };
+  
+   const isContactInContacts = (contacts, newContactName) =>
+    contacts.some(({ name }) => name === newContactName);
+  
+   const isContactEmpty = (newContactName, newContactNumber) =>
+     newContactName === "" || newContactNumber === "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact({ id: nanoid(), name, number }));
+    if (isContactInContacts(contacts, name)) {
+      alert(`${name} is already in contacts`);
+      return;
+    };
+    if (isContactEmpty(name, number)) {
+      alert(`Please fill in both fields!`);
+      return;
+    }
+      dispatch(addContact({ id: nanoid(), name, number }));
     console.log("z Form - handleSubmit", name, number);
     console.log("z Form - state", state);
-
     console.log("z Form - contacts z handleSubmit", contacts);
+    setName("");
+    setNumber("");
   };
 
   return (
