@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
+import { initialContacts } from "../utils/localStorage";
 
 const initialState = {
-  contacts: [
-    { id: nanoid(4), name: "RRRosie Simpson", number: "123-12-12" },
-    { id: nanoid(4), name: "Hermione Kline", number: "456-45-45" },
-    { id: nanoid(4), name: "Eden Clements", number: "789-78-78" },
-    { id: nanoid(4), name: "Annie Copeland", number: "227-91-26" },
-  ],
+  contacts: initialContacts,
+  // contacts: [
+  //   { id: nanoid(4), name: "RRRosie Simpson", number: "123-12-12" },
+  //   { id: nanoid(4), name: "Hermione Kline", number: "456-45-45" },
+  //   { id: nanoid(4), name: "Eden Clements", number: "789-78-78" },
+  //   { id: nanoid(4), name: "Annie Copeland", number: "227-91-26" },
+  // ],
   filter: "",
 };
 
