@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../features/actions";
 import { useSelector } from "react-redux";
+import { saveToLocalStore } from "../utils/localStorage";
 
 
 const Contacts = () => {
@@ -26,6 +27,8 @@ const Contacts = () => {
   console.log("z Contacts - contacts", contacts);
   console.log("z Contacts - state", state);
   console.log("z Contacts - state.contact.contacts", state.contact.contacts);
+
+  saveToLocalStore("CONTACTS", contacts);
 
   const handleDelete = (id) => {
     dispatch(deleteContact({ id }));
